@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class JobAdminPage extends StatefulWidget {
-  const JobAdminPage({Key? key}) : super(key: key);
+  const JobAdminPage({super.key});
 
   @override
   _JobAdminPageState createState() => _JobAdminPageState();
@@ -27,7 +27,7 @@ class _JobAdminPageState extends State<JobAdminPage> {
 
     FirebaseFirestore.instance.collection('jobs').add(jobData).then((_) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Job added successfully')),
+        const SnackBar(content: Text('Job added successfully')),
       );
       _clearForm();
     });
@@ -57,25 +57,25 @@ class _JobAdminPageState extends State<JobAdminPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Edit Job'),
+          title: const Text('Edit Job'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 controller: titleController,
-                decoration: InputDecoration(labelText: 'Title'),
+                decoration: const InputDecoration(labelText: 'Title'),
               ),
               TextField(
                 controller: descriptionController,
-                decoration: InputDecoration(labelText: 'Description'),
+                decoration: const InputDecoration(labelText: 'Description'),
               ),
               TextField(
                 controller: typeController,
-                decoration: InputDecoration(labelText: 'Type'),
+                decoration: const InputDecoration(labelText: 'Type'),
               ),
               TextField(
                 controller: locationController,
-                decoration: InputDecoration(labelText: 'Location'),
+                decoration: const InputDecoration(labelText: 'Location'),
               ),
             ],
           ),
@@ -90,12 +90,12 @@ class _JobAdminPageState extends State<JobAdminPage> {
                 }).then((_) {
                   Navigator.of(context).pop();
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Job updated successfully')),
+                    const SnackBar(content: Text('Job updated successfully')),
                   );
                   _clearForm();
                 });
               },
-              child: Text('Save'),
+              child: const Text('Save'),
             ),
           ],
         );
@@ -107,7 +107,7 @@ class _JobAdminPageState extends State<JobAdminPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Job Admin'),
+        title: const Text('Job Admin'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -118,41 +118,41 @@ class _JobAdminPageState extends State<JobAdminPage> {
                 children: [
                   TextField(
                     controller: titleController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Title',
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextField(
                     controller: descriptionController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Description',
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextField(
                     controller: typeController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Type',
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextField(
                     controller: locationController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Location',
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: _saveJob,
-                    child: Text('Save Job'),
+                    child: const Text('Save Job'),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                 ],
               ),
             Expanded(
@@ -160,11 +160,11 @@ class _JobAdminPageState extends State<JobAdminPage> {
                 stream: FirebaseFirestore.instance.collection('jobs').snapshots(),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
 
                   if (snapshot.hasError) {
-                    return Center(child: Text('Error fetching jobs.'));
+                    return const Center(child: Text('Error fetching jobs.'));
                   }
 
                   final jobs = snapshot.data?.docs ?? [];
@@ -193,11 +193,11 @@ class _JobAdminPageState extends State<JobAdminPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                icon: Icon(Icons.edit),
+                                icon: const Icon(Icons.edit),
                                 onPressed: () => _showEditDialog(job),
                               ),
                               IconButton(
-                                icon: Icon(Icons.delete),
+                                icon: const Icon(Icons.delete),
                                 onPressed: () => _deleteJob(job.id),
                               ),
                             ],

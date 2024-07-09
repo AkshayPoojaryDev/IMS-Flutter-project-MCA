@@ -9,7 +9,7 @@ import 'package:ims/Dash-board-pages/resource.dart';
 import 'package:ims/Dash-board-pages/task.dart';
 
 class InternDashboard extends StatefulWidget {
-  const InternDashboard({Key? key}) : super(key: key);
+  const InternDashboard({super.key});
 
   @override
   _InternDashboardState createState() => _InternDashboardState();
@@ -63,25 +63,25 @@ class _InternDashboardState extends State<InternDashboard> {
               icon: Icons.check_circle,
               label: 'Attendance',
               color: Colors.blue,
-              onTap: () => _navigateToPage(AttendancePage()),
+              onTap: () => _navigateToPage(const AttendancePage()),
             ),
             DashboardOption(
               icon: Icons.task,
               label: 'Task',
               color: Colors.green,
-              onTap: () => _navigateToPage(TaskPage()),
+              onTap: () => _navigateToPage(const TaskPage()),
             ),
             DashboardOption(
               icon: Icons.document_scanner,
               label: 'Document',
               color: Colors.orange,
-              onTap: () => _navigateToPage(DocumentPage()),
+              onTap: () => _navigateToPage(const DocumentPage()),
             ),
             DashboardOption(
               icon: Icons.book,
               label: 'Resources',
               color: Colors.purple,
-              onTap: () => _navigateToPage(ResourcePage()),
+              onTap: () => _navigateToPage(const ResourcePage()),
             ),
           ],
         ),
@@ -121,12 +121,12 @@ class DashboardOption extends StatefulWidget {
   final VoidCallback onTap;
 
   const DashboardOption({
-    Key? key,
+    super.key,
     required this.icon,
     required this.label,
     required this.color,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   _DashboardOptionState createState() => _DashboardOptionState();

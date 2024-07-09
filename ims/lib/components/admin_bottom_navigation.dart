@@ -4,7 +4,7 @@ class AdminBottomNavigation extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onItemTapped;
 
-  AdminBottomNavigation({
+  const AdminBottomNavigation({super.key, 
     required this.selectedIndex,
     required this.onItemTapped,
   });

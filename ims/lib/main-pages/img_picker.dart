@@ -5,7 +5,7 @@ import 'dart:io';
 class ImagePickerWidget extends StatelessWidget {
   final Function(File) onImagePicked;
 
-  const ImagePickerWidget({Key? key, required this.onImagePicked}) : super(key: key);
+  const ImagePickerWidget({super.key, required this.onImagePicked});
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await ImagePicker().pickImage(source: source);
@@ -21,12 +21,12 @@ class ImagePickerWidget extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () => _pickImage(ImageSource.camera),
-          child: Text('Camera'),
+          child: const Text('Camera'),
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         ElevatedButton(
           onPressed: () => _pickImage(ImageSource.gallery),
-          child: Text('Gallery'),
+          child: const Text('Gallery'),
         ),
       ],
     );

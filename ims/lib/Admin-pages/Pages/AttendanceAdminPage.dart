@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AttendanceAdminPage extends StatefulWidget {
+  const AttendanceAdminPage({super.key});
+
   @override
   _AttendanceAdminPageState createState() => _AttendanceAdminPageState();
 }
@@ -24,7 +26,7 @@ class _AttendanceAdminPageState extends State<AttendanceAdminPage> {
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Attendance marked')),
+      const SnackBar(content: Text('Attendance marked')),
     );
   }
 
@@ -46,10 +48,10 @@ class _AttendanceAdminPageState extends State<AttendanceAdminPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Admin - Mark Attendance'),
+        title: const Text('Admin - Mark Attendance'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             ElevatedButton(
@@ -61,7 +63,7 @@ class _AttendanceAdminPageState extends State<AttendanceAdminPage> {
                 future: _getUsers(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                   List<DocumentSnapshot> users = snapshot.data!;
                   return ListView.builder(
@@ -75,11 +77,11 @@ class _AttendanceAdminPageState extends State<AttendanceAdminPage> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             IconButton(
-                              icon: Icon(Icons.check, color: Colors.green),
+                              icon: const Icon(Icons.check, color: Colors.green),
                               onPressed: () => _markAttendance(userId, true),
                             ),
                             IconButton(
-                              icon: Icon(Icons.close, color: Colors.red),
+                              icon: const Icon(Icons.close, color: Colors.red),
                               onPressed: () => _markAttendance(userId, false),
                             ),
                           ],

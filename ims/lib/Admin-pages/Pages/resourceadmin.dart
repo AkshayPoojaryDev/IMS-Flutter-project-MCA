@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class TaskAdminPage extends StatelessWidget {
+class ResourceAdminPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  final _taskController = TextEditingController();
-  final _deadlineController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _descriptionController = TextEditingController();
 
-  TaskAdminPage({super.key});
+  ResourceAdminPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,36 +16,36 @@ class TaskAdminPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             TextFormField(
-              controller: _taskController,
-              decoration: InputDecoration(labelText: 'Task'),
+              controller: _nameController,
+              decoration: const InputDecoration(labelText: 'Resource Name'),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter a task';
+                  return 'Please enter a name';
                 }
                 return null;
               },
             ),
             TextFormField(
-              controller: _deadlineController,
-              decoration: InputDecoration(labelText: 'Deadline'),
+              controller: _descriptionController,
+              decoration: const InputDecoration(labelText: 'Resource Description'),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter a deadline';
+                  return 'Please enter a description';
                 }
                 return null;
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   // Save data to the backend
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Processing Data')),
+                    const SnackBar(content: Text('Processing Data')),
                   );
                 }
               },
-              child: Text('Submit'),
+              child: const Text('Submit'),
             ),
           ],
         ),

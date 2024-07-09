@@ -7,9 +7,9 @@ class DocumentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Document'),
+        title: const Text('Document'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Document Page Content'),
       ),
     );

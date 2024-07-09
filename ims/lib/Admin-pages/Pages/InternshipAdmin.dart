@@ -27,7 +27,7 @@ class _InternshipAdminPageState extends State<InternshipAdminPage> {
 
     FirebaseFirestore.instance.collection('internships').add(internshipData).then((_) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Internship added successfully')),
+        const SnackBar(content: Text('Internship added successfully')),
       );
       _clearForm();
     });
@@ -57,25 +57,25 @@ class _InternshipAdminPageState extends State<InternshipAdminPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Edit Internship'),
+          title: const Text('Edit Internship'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 controller: titleController,
-                decoration: InputDecoration(labelText: 'Title'),
+                decoration: const InputDecoration(labelText: 'Title'),
               ),
               TextField(
                 controller: descriptionController,
-                decoration: InputDecoration(labelText: 'Description'),
+                decoration: const InputDecoration(labelText: 'Description'),
               ),
               TextField(
                 controller: typeController,
-                decoration: InputDecoration(labelText: 'Type'),
+                decoration: const InputDecoration(labelText: 'Type'),
               ),
               TextField(
                 controller: locationController,
-                decoration: InputDecoration(labelText: 'Location'),
+                decoration: const InputDecoration(labelText: 'Location'),
               ),
             ],
           ),
@@ -90,12 +90,12 @@ class _InternshipAdminPageState extends State<InternshipAdminPage> {
                 }).then((_) {
                   Navigator.of(context).pop();
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Internship updated successfully')),
+                    const SnackBar(content: Text('Internship updated successfully')),
                   );
                   _clearForm();
                 });
               },
-              child: Text('Save'),
+              child: const Text('Save'),
             ),
           ],
         );
@@ -107,7 +107,7 @@ class _InternshipAdminPageState extends State<InternshipAdminPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Internship Admin'),
+        title: const Text('Internship Admin'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -118,41 +118,41 @@ class _InternshipAdminPageState extends State<InternshipAdminPage> {
                 children: [
                   TextField(
                     controller: titleController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Title',
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextField(
                     controller: descriptionController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Description',
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextField(
                     controller: typeController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Type',
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextField(
                     controller: locationController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Location',
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: _saveInternship,
-                    child: Text('Save Internship'),
+                    child: const Text('Save Internship'),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                 ],
               ),
             Expanded(
@@ -160,11 +160,11 @@ class _InternshipAdminPageState extends State<InternshipAdminPage> {
                 stream: FirebaseFirestore.instance.collection('internships').snapshots(),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
 
                   if (snapshot.hasError) {
-                    return Center(child: Text('Error fetching internships.'));
+                    return const Center(child: Text('Error fetching internships.'));
                   }
 
                   final internships = snapshot.data?.docs ?? [];
@@ -193,11 +193,11 @@ class _InternshipAdminPageState extends State<InternshipAdminPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                icon: Icon(Icons.edit),
+                                icon: const Icon(Icons.edit),
                                 onPressed: () => _showEditDialog(internship),
                               ),
                               IconButton(
-                                icon: Icon(Icons.delete),
+                                icon: const Icon(Icons.delete),
                                 onPressed: () => _deleteInternship(internship.id),
                               ),
                             ],

@@ -24,7 +24,7 @@ class AvailJobsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Available Jobs'),
+        title: const Text('Available Jobs'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -33,23 +33,23 @@ class AvailJobsPage extends StatelessWidget {
             TextField(
               decoration: InputDecoration(
                 hintText: 'Search jobs...',
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Expanded(
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance.collection('jobs').snapshots(),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
 
                   if (snapshot.hasError) {
-                    return Center(child: Text('Error fetching data.'));
+                    return const Center(child: Text('Error fetching data.'));
                   }
 
                   final jobs = snapshot.data?.docs ?? [];
@@ -64,21 +64,21 @@ class AvailJobsPage extends StatelessWidget {
                       final location = job['location'];
 
                       return Card(
-                        margin: EdgeInsets.symmetric(vertical: 10),
+                        margin: const EdgeInsets.symmetric(vertical: 10),
                         child: ListTile(
                           title: Text(title),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(description),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Row(
                                 children: [
                                   Chip(
                                     label: Text(type),
                                     backgroundColor: Colors.green[100],
                                   ),
-                                  SizedBox(width: 10),
+                                  const SizedBox(width: 10),
                                   Text('Location: $location'),
                                 ],
                               ),

@@ -6,9 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:ims/main-pages/img_picker.dart'; // Ensure correct import path
-import 'package:ims/components/my_button.dart';
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -111,7 +110,7 @@ class _ProfilePageState extends State<ProfilePage> {
         }, SetOptions(merge: true));
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Profile saved successfully')),
+          const SnackBar(content: Text('Profile saved successfully')),
         );
 
         setState(() {
@@ -136,11 +135,11 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.grey),
+          borderSide: const BorderSide(color: Colors.grey),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.blue),
+          borderSide: const BorderSide(color: Colors.blue),
         ),
         filled: true,
         fillColor: enabled ? Colors.white : Colors.grey[200],

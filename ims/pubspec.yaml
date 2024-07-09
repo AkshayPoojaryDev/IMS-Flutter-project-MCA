@@ -47,7 +47,9 @@ dependencies:
   percent_indicator: ^4.2.3
   table_calendar: ^3.1.1
   firebase_app_check: ^0.2.2+7
-
+  firebase_messaging: ^14.9.2
+  mailer: ^6.1.0
+  
 
   
 dev_dependencies:

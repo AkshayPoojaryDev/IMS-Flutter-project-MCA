@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ims/components/my_button.dart';
 import 'package:ims/components/my_textfield.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -50,9 +51,24 @@ class _LoginPageState extends State<LoginPage> {
         password: passwordController.text,
       );
 
-      if (mounted) {
-        Navigator.pop(context);  // Dismiss loading dialog
-        Navigator.pushNamed(context, '/home');  // Navigate to home page
+      // Check if the user document exists in Firestore
+      final userDoc = await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).get();
+      if (!userDoc.exists) {
+        // Handle the case where the user document doesn't exist (should not happen if registration is properly implemented)
+        showErrorDialog('User Not Found', 'User document not found. Please register.');
+        FirebaseAuth.instance.signOut();
+      } else {
+        // Navigate to home page based on user role
+        final userRole = userDoc['role'];
+        if (mounted) {
+          Navigator.pop(context);  // Dismiss loading dialog
+          // Example of routing based on role
+          if (userRole == 'admin') {
+            Navigator.pushNamed(context, '/admin_home');
+          } else {
+            Navigator.pushNamed(context, '/user_home');
+          }
+        }
       }
     } on FirebaseAuthException catch (e) {
       if (mounted) {

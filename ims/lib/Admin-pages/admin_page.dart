@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:ims/Admin-pages/Pages/AttendanceAdminPage.dart';
-import 'package:ims/Admin-pages/Pages/TaskAdminPage.dart';
-import 'package:ims/Admin-pages/Pages/DocumentAdminPage.dart';
-import 'package:ims/Admin-pages/Pages/ResourceAdminPage.dart';
+import 'package:ims/Admin-pages/Pages/documentadmin.dart';
+import 'package:ims/Admin-pages/Pages/resourceadmin.dart';
 import 'package:ims/Admin-pages/Pages/JobAdmin.dart';
 import 'package:ims/Admin-pages/Pages/InternshipAdmin.dart';
-import 'package:ims/Admin-pages/Pages/ApplicationsAdminPage.dart'; // Import the ApplicationsAdminPage
 import 'package:ims/Admin-pages/Pages/ApplicationsAdminPage.dart';
+import 'package:ims/Admin-pages/Pages/taskadmin.dart';
 import 'package:ims/components/top_app_bar.dart'; // Assuming you have this
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Admin Dashboard',
+      home: AdminDashboard(),
+    );
+  }
+}
 
 class AdminDashboard extends StatefulWidget {
   const AdminDashboard({super.key});
@@ -45,19 +60,19 @@ class _AdminDashboardState extends State<AdminDashboard> {
               icon: Icons.check_circle,
               label: 'Attendance',
               color: Colors.blue,
-              onTap: () => _navigateToPage(AttendanceAdminPage()),
+              onTap: () => _navigateToPage(const AttendanceAdminPage()),
             ),
             DashboardOption(
               icon: Icons.task,
               label: 'Task',
               color: Colors.green,
-              onTap: () => _navigateToPage(TaskAdminPage()),
+              onTap: () => _navigateToPage(const TaskAdminPage()),
             ),
             DashboardOption(
               icon: Icons.document_scanner,
               label: 'Document',
               color: Colors.orange,
-              onTap: () => _navigateToPage(DocumentAdminPage()),
+              onTap: () => _navigateToPage(const DocumentAdminPage()),
             ),
             DashboardOption(
               icon: Icons.book,
@@ -69,19 +84,19 @@ class _AdminDashboardState extends State<AdminDashboard> {
               icon: Icons.business_center,
               label: 'Jobs',
               color: Colors.red,
-              onTap: () => _navigateToPage(JobAdminPage()),
+              onTap: () => _navigateToPage(const JobAdminPage()),
             ),
             DashboardOption(
               icon: Icons.work,
               label: 'Internships',
               color: Colors.teal,
-              onTap: () => _navigateToPage(InternshipAdminPage()),
+              onTap: () => _navigateToPage(const InternshipAdminPage()),
             ),
             DashboardOption(
               icon: Icons.assignment,
               label: 'Applications',
               color: Colors.blueGrey,
-              onTap: () => _navigateToPage(ApplicationsAdminPage()),
+              onTap: () => _navigateToPage(const ApplicationsAdminPage()),
             ),
           ],
         ),
@@ -97,12 +112,12 @@ class DashboardOption extends StatefulWidget {
   final VoidCallback onTap;
 
   const DashboardOption({
-    Key? key,
+    super.key,
     required this.icon,
     required this.label,
     required this.color,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   _DashboardOptionState createState() => _DashboardOptionState();

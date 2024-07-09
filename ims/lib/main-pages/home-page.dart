@@ -8,7 +8,7 @@ import 'package:ims/pages/auth_page.dart';
 import 'package:ims/main-pages/intern_dashboard.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
         // Jobs Page
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => AvailJobsPage()),
+          MaterialPageRoute(builder: (context) => const AvailJobsPage()),
         );
         break;
       case 2:
@@ -54,17 +54,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _pages = [
+    final List<Widget> pages = [
       Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Welcome to Nicozn Technologies',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton.icon(
               onPressed: () {
                 Navigator.push(
@@ -72,18 +72,18 @@ class _HomePageState extends State<HomePage> {
                   MaterialPageRoute(builder: (context) => const InternDashboard()),
                 );
               },
-              icon: Icon(Icons.arrow_forward),
-              label: Text('Get Started'),
+              icon: const Icon(Icons.arrow_forward),
+              label: const Text('Get Started'),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                textStyle: TextStyle(fontSize: 18),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                textStyle: const TextStyle(fontSize: 18),
               ),
             ),
           ],
         ),
       ),
-      AvailJobsPage(), // Jobs Page
-      AvilInternshipPage(),
+      const AvailJobsPage(), // Jobs Page
+      const AvilInternshipPage(),
       const ProfilePage(),
     ];
 
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: _pages[_selectedIndex],
+      body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

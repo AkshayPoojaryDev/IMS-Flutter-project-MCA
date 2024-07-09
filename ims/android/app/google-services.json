@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "493264433529",
+    "firebase_url": "https://internship-management-sy-8ce13-default-rtdb.firebaseio.com",
     "project_id": "internship-management-sy-8ce13",
     "storage_bucket": "internship-management-sy-8ce13.appspot.com"
   },
@@ -13,14 +14,6 @@
         }
       },
       "oauth_client": [
-        {
-          "client_id": "493264433529-8hiqb3hne324mdbnc1p0q01esa1r1hif.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.ims",
-            "certificate_hash": "696f972a77f625363b10f5ff5b08b86f89be9a75"
-          }
-        },
         {
           "client_id": "493264433529-7ne2o7aul31qeqrnck8fal9okot40bpd.apps.googleusercontent.com",
           "client_type": 3

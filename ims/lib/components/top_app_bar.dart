@@ -7,12 +7,12 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
 
   const TopAppBar({
-    Key? key,
+    super.key,
     required this.title,
     required this.isLoggedIn,
     this.onLogout,
     this.actions,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
     if (isLoggedIn) {
       return [
         IconButton(
-          icon: Icon(Icons.logout),
+          icon: const Icon(Icons.logout),
           onPressed: () {
             if (onLogout != null) {
               onLogout!();
@@ -42,5 +42,5 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

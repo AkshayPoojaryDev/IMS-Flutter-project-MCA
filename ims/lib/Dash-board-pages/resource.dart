@@ -7,9 +7,9 @@ class ResourcePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Resource'),
+        title: const Text('Resource'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Resource Page Content'),
       ),
     );

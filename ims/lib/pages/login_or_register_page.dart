@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ims/pages/login_page.dart';
 import 'package:ims/pages/register_page.dart';
 class LoginOrRegisterPage extends StatefulWidget {
-  const LoginOrRegisterPage({Key? key}) : super(key: key);
+  const LoginOrRegisterPage({super.key});
 
   @override
   State<LoginOrRegisterPage> createState() => _LoginOrRegisterPageState();

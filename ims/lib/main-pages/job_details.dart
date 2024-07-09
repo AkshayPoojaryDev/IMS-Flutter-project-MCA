@@ -9,18 +9,18 @@ class JobDetailPage extends StatelessWidget {
   final String location;
 
   const JobDetailPage({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
     required this.type,
     required this.location,
-  }) : super(key: key);
+  });
 
   Future<void> _applyForJob(BuildContext context) async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('You must be logged in to apply.')),
+        const SnackBar(content: Text('You must be logged in to apply.')),
       );
       return;
     }
@@ -29,7 +29,7 @@ class JobDetailPage extends StatelessWidget {
 
     if (!userProfile.exists) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('User profile not found.')),
+        const SnackBar(content: Text('User profile not found.')),
       );
       return;
     }
@@ -48,7 +48,7 @@ class JobDetailPage extends StatelessWidget {
     await FirebaseFirestore.instance.collection('job_applications').add(applicationData);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Application submitted successfully.')),
+      const SnackBar(content: Text('Application submitted successfully.')),
     );
 
     Navigator.pop(context);
@@ -67,23 +67,23 @@ class JobDetailPage extends StatelessWidget {
           children: [
             Text(
               description,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               children: [
                 Chip(
                   label: Text(type),
                   backgroundColor: Colors.blue[100],
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Text('Location: $location'),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => _applyForJob(context),
-              child: Text('Apply Now'),
+              child: const Text('Apply Now'),
             ),
           ],
         ),

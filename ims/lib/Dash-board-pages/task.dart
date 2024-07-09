@@ -8,9 +8,9 @@ class TaskPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Task'),
+        title: const Text('Task'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Task Page Content'),
       ),
     );

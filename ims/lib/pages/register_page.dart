@@ -6,7 +6,7 @@ import 'package:email_validator/email_validator.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
-  RegisterPage({Key? key, required this.onTap});
+  const RegisterPage({Key? key, required this.onTap});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
