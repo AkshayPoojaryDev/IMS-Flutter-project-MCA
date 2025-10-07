@@ -49,6 +49,8 @@ dependencies:
   firebase_app_check: ^0.2.2+7
   firebase_messaging: ^14.9.2
   mailer: ^6.1.0
+  flutter_animate: ^4.5.0
+  lottie: ^3.1.2
   
 
   

@@ -10,13 +10,13 @@ class InternshipDetailPage extends StatefulWidget {
   final String status;
 
   const InternshipDetailPage({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
     required this.type,
     required this.location,
     required this.status,
-  }) : super(key: key);
+  });
 
   @override
   _InternshipDetailPageState createState() => _InternshipDetailPageState();
@@ -54,7 +54,7 @@ class _InternshipDetailPageState extends State<InternshipDetailPage> {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('You must be logged in to apply.')),
+        const SnackBar(content: Text('You must be logged in to apply.')),
       );
       return;
     }
@@ -63,7 +63,7 @@ class _InternshipDetailPageState extends State<InternshipDetailPage> {
 
     if (!userProfile.exists) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('User profile not found.')),
+        const SnackBar(content: Text('User profile not found.')),
       );
       return;
     }
@@ -83,7 +83,7 @@ class _InternshipDetailPageState extends State<InternshipDetailPage> {
     await FirebaseFirestore.instance.collection('internship_applications').add(applicationData);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Application submitted successfully.')),
+      const SnackBar(content: Text('Application submitted successfully.')),
     );
 
     setState(() {
@@ -130,15 +130,15 @@ class _InternshipDetailPageState extends State<InternshipDetailPage> {
           children: [
             Text(
               widget.title,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               widget.description,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -146,17 +146,17 @@ class _InternshipDetailPageState extends State<InternshipDetailPage> {
                   label: Text(widget.type),
                   backgroundColor: Colors.blue[100],
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Text('Location: ${widget.location}'),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             ElevatedButton(
               onPressed: _hasApplied ? null : () => _applyForInternship(context),
               style: ElevatedButton.styleFrom(
                 backgroundColor: _hasApplied ? Colors.grey : Colors.blue,
-                minimumSize: Size(double.infinity, 60), // Full width and bigger button
-                textStyle: TextStyle(fontSize: 20),
+                minimumSize: const Size(double.infinity, 60), // Full width and bigger button
+                textStyle: const TextStyle(fontSize: 20),
               ),
               child: Text(_getButtonText()),
             ),
