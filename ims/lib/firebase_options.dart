@@ -27,7 +27,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -41,46 +44,37 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyALJwZK3MruqeNVckiRRINIjejPLDQf7wk',
-    appId: '1:493264433529:web:51609bd77219203a21bfa8',
-    messagingSenderId: '493264433529',
-    projectId: 'internship-management-sy-8ce13',
-    authDomain: 'internship-management-sy-8ce13.firebaseapp.com',
-    storageBucket: 'internship-management-sy-8ce13.appspot.com',
+    apiKey: 'AIzaSyAhv7GkwP3pn35o1rGgtu3Ok3Vjhq67tcM',
+    appId: '1:687380741071:web:520c92d9fae10aaad630ba',
+    messagingSenderId: '687380741071',
+    projectId: 'ims-89437',
+    authDomain: 'ims-89437.firebaseapp.com',
+    storageBucket: 'ims-89437.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDkRIj3RUNOpl6Jp46bu-FbitY2nvPdIaI',
-    appId: '1:493264433529:android:283aabab945bac3b21bfa8',
-    messagingSenderId: '493264433529',
-    projectId: 'internship-management-sy-8ce13',
-    storageBucket: 'internship-management-sy-8ce13.appspot.com',
+    apiKey: 'AIzaSyAhv7GkwP3pn35o1rGgtu3Ok3Vjhq67tcM',
+    appId: '1:687380741071:android:520c92d9fae10aaad630ba',
+    messagingSenderId: '687380741071',
+    projectId: 'ims-89437',
+    storageBucket: 'ims-89437.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDEvW5Dg2mnmlLZ5oRbQAuWOiQ96TnAW-8',
-    appId: '1:493264433529:ios:5c35a02a994e803d21bfa8',
-    messagingSenderId: '493264433529',
-    projectId: 'internship-management-sy-8ce13',
-    storageBucket: 'internship-management-sy-8ce13.appspot.com',
+    apiKey: 'AIzaSyAhv7GkwP3pn35o1rGgtu3Ok3Vjhq67tcM',
+    appId: '1:687380741071:ios:520c92d9fae10aaad630ba',
+    messagingSenderId: '687380741071',
+    projectId: 'ims-89437',
+    storageBucket: 'ims-89437.appspot.com',
     iosBundleId: 'com.example.ims',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDEvW5Dg2mnmlLZ5oRbQAuWOiQ96TnAW-8',
-    appId: '1:493264433529:ios:5c35a02a994e803d21bfa8',
-    messagingSenderId: '493264433529',
-    projectId: 'internship-management-sy-8ce13',
-    storageBucket: 'internship-management-sy-8ce13.appspot.com',
+    apiKey: 'AIzaSyAhv7GkwP3pn35o1rGgtu3Ok3Vjhq67tcM',
+    appId: '1:687380741071:ios:520c92d9fae10aaad630ba',
+    messagingSenderId: '687380741071',
+    projectId: 'ims-89437',
+    storageBucket: 'ims-89437.appspot.com',
     iosBundleId: 'com.example.ims',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyALJwZK3MruqeNVckiRRINIjejPLDQf7wk',
-    appId: '1:493264433529:web:3d1e857e0b809f0c21bfa8',
-    messagingSenderId: '493264433529',
-    projectId: 'internship-management-sy-8ce13',
-    authDomain: 'internship-management-sy-8ce13.firebaseapp.com',
-    storageBucket: 'internship-management-sy-8ce13.appspot.com',
   );
 }

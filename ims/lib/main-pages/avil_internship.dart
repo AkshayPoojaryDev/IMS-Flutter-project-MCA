@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'internship_detail_page.dart'; // Import the InternshipDetailPage
 
 class AvilInternshipPage extends StatelessWidget {
-  const AvilInternshipPage({Key? key});
+  const AvilInternshipPage({super.key, Key? key});
 
   Future<List<QueryDocumentSnapshot>> _fetchAppliedInternships() async {
     final user = FirebaseAuth.instance.currentUser;
@@ -27,13 +27,13 @@ class AvilInternshipPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Available Internships'),
+        title: const Text('Available Internships'),
       ),
       body: FutureBuilder<List<QueryDocumentSnapshot>>(
         future: _fetchAppliedInternships(),
         builder: (context, appliedSnapshot) {
           if (appliedSnapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (appliedSnapshot.hasError) {
@@ -47,7 +47,7 @@ class AvilInternshipPage extends StatelessWidget {
             stream: FirebaseFirestore.instance.collection('internships').snapshots(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
 
               if (snapshot.hasError) {
@@ -56,7 +56,7 @@ class AvilInternshipPage extends StatelessWidget {
               }
 
               if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                return Center(child: Text('No internships available.'));
+                return const Center(child: Text('No internships available.'));
               }
 
               final internships = snapshot.data!.docs;
@@ -80,33 +80,33 @@ class AvilInternshipPage extends StatelessWidget {
               return ListView(
                 children: [
                   if (acceptedInternshipList.isNotEmpty) ...[
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
+                    const Padding(
+                      padding: EdgeInsets.all(15.0),
                       child: Text(
                         'Accepted Internships',
                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    ...acceptedInternshipList.map((internship) => InternshipCard(internship: internship)).toList(),
+                    ...acceptedInternshipList.map((internship) => InternshipCard(internship: internship)),
                   ],
                   if (appliedInternshipList.isNotEmpty) ...[
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
+                    const Padding(
+                      padding: EdgeInsets.all(15.0),
                       child: Text(
                         'Applied Internships',
                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    ...appliedInternshipList.map((internship) => InternshipCard(internship: internship)).toList(),
+                    ...appliedInternshipList.map((internship) => InternshipCard(internship: internship)),
                   ],
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
+                  const Padding(
+                    padding: EdgeInsets.all(15.0),
                     child: Text(
                       'Available Internships',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  ...availableInternshipList.map((internship) => InternshipCard(internship: internship)).toList(),
+                  ...availableInternshipList.map((internship) => InternshipCard(internship: internship)),
                 ],
               );
             },
@@ -120,7 +120,7 @@ class AvilInternshipPage extends StatelessWidget {
 class InternshipCard extends StatelessWidget {
   final QueryDocumentSnapshot internship;
 
-  const InternshipCard({required this.internship});
+  const InternshipCard({super.key, required this.internship});
 
   @override
   Widget build(BuildContext context) {
@@ -131,21 +131,21 @@ class InternshipCard extends StatelessWidget {
     final status = internship['status'] ?? 'available'; // Assuming 'status' field exists
 
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       child: ListTile(
         title: Text(title),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(description),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Row(
               children: [
                 Chip(
                   label: Text(type),
                   backgroundColor: Colors.blue[100],
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Text('Location: $location'),
               ],
             ),
